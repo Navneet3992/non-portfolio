@@ -3,25 +3,84 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --color-bg: #141414;
+  --color-surface: #141414;
+  --color-surface-2: #1e1e1e;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-muted: #d1d5dc;
+  --color-text-dim: #444444;
+
+  /* Accent */
+  --color-accent: #f5a623;
+
+  /* Project card backgrounds */
+  --color-card-teal: #1a3d3a;
+  --color-card-dark: #1a1a1a;
+  --color-card-orange: #8b3a00;
+  --color-card-red: #6b0000;
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-button: 8px;
+  --radius-badge: 999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-surface-2);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+@keyframes button-swoosh {
+  0% {
+    top: -20%;
+    left: -20%;
+  }
+  100% {
+    top: 100%;
+    left: 100%;
+  }
+}
+
+.animate-swoosh {
+  animation: button-swoosh 5s linear infinite;
 }

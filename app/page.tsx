@@ -1,101 +1,206 @@
 import Image from "next/image";
+import CaseStudyStack from "@/components/CaseStudyStack";
+import ToolBadge from "@/components/ToolBadge";
+import TestimonialMarquee from "@/components/TestimonialMarquee";
+import WorkExTimeline from "@/components/WorkExTimeline";
+import GhostHeading from "@/components/ui/GhostHeading";
+import ContactMeButton from "@/components/ui/ContactMeButton";
+import { caseStudies } from "@/lib/data/caseStudies";
+import { tools } from "@/lib/data/tools";
+import { testimonials } from "@/lib/data/testimonials";
+import {
+  productDesignJobs,
+  graphicDesignerNote,
+  graphicDesignJobs,
+} from "@/lib/data/workExperience";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main>
+      {/* Hero */}
+      <section className="relative mx-auto flex max-w-content flex-col gap-8 px-6 pb-24 pt-16 md:pt-28">
+        <div
+          data-gif-slot="hero-visual"
+          className="absolute inset-x-0 top-0 -z-10 h-[32rem] w-full bg-gradient-to-b from-surface/40 to-transparent"
+          aria-hidden
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <div>
+          <h1 className="font-display text-hero uppercase">
+            PRODUCT <span className="font-playfair font-normal italic">&amp;</span>
+          </h1>
+          <div className="flex items-center gap-6">
+            <Image
+              src="/images/hero-clock.gif"
+              alt=""
+              aria-hidden
+              width={108}
+              height={108}
+              unoptimized
+              className="hidden h-[108px] w-[108px] shrink-0 lg:block"
+            />
+            <h1 className="font-display text-hero uppercase md:whitespace-nowrap">MOTION DESIGNER</h1>
+            <Image
+              src="/images/profile.jpg"
+              alt="Navneet Mandal"
+              width={90}
+              height={120}
+              className="hidden h-[120px] w-[90px] shrink-0 rounded-[75px] object-cover lg:block"
+            />
+          </div>
+        </div>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Intro Strip */}
+      <section className="mx-auto flex max-w-content flex-col gap-8 px-6 pb-24 pt-12 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center gap-4">
+          <span className="font-body text-[18px] font-semibold uppercase tracking-widest text-text-primary">
+            SAY HELLO
+          </span>
+          <div className="flex gap-4">
+            <a
+              href="mailto:mailme.navneetmandal@gmail.com"
+              aria-label="Email"
+              className="transition-opacity hover:opacity-80"
+            >
+              <Image src="/images/icon-mail.svg" alt="" aria-hidden width={32} height={32} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="transition-opacity hover:opacity-80"
+            >
+              <Image src="/images/icon-instagram.svg" alt="" aria-hidden width={32} height={32} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="transition-opacity hover:opacity-80"
+            >
+              <Image src="/images/icon-linkedin.svg" alt="" aria-hidden width={32} height={32} />
+            </a>
+          </div>
+        </div>
+
+        <p className="max-w-xl font-body font-semibold text-[18px] leading-[1.4] text-text-primary">
+          Hello there, I’m Navneet - a product designer specialising in creating high-impact
+          products using psychology, motion & business thinking -currently based in Bangalore,
+          India.
+        </p>
+
+        <ContactMeButton />
+      </section>
+
+      {/* Recent Works */}
+      <section id="work" className="relative mx-auto max-w-content px-6 pb-24 pt-[51px]">
+        <GhostHeading
+          className="absolute -top-4 left-1/2 -translate-x-1/2 text-[clamp(3rem,13.5vw,8rem)] leading-none"
+          style={{
+            backgroundImage: "linear-gradient(to bottom, #3d3d3d, #141414)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            fontFamily: "var(--font-body)",
+          }}
+        >
+          Recent Works
+        </GhostHeading>
+        <CaseStudyStack caseStudies={caseStudies} />
+      </section>
+
+      {/* UX Process */}
+      <section className="relative mx-auto max-w-content px-6 py-24">
+        <div className="md:flex md:items-start">
+          <div className="relative md:flex md:h-[444px] md:flex-1 md:flex-col">
+            <h2 className="font-body font-extrabold text-h2">UX Process</h2>
+
+            <div
+              className="relative z-20 mt-6 rounded-[24px] p-6 text-[24px] text-text-muted md:mr-[-32px]"
+              style={{ backgroundImage: "linear-gradient(135deg, #242424, #141414)" }}
+            >
+              <p className="font-semibold text-text-primary">
+                At the heart of my UX process is identifying the right problem to solve.
+              </p>
+              <p className="mt-4">
+                I approach design with a deeply user-centric mindset, using rapid iteration and
+                sprint-based experimentation to shape intuitive, scalable systems.
+              </p>
+              <p className="mt-4">
+                By innovating within real-world constraints — user needs, business goals, and
+                technical realities — I craft UX flows that preserve usability, build trust, and
+                drive measurable outcomes.
+              </p>
+            </div>
+
+            <Image
+              src="/images/arrow.svg"
+              alt=""
+              aria-hidden
+              width={140}
+              height={140}
+              className="absolute -bottom-[12px] right-[96px] z-30 hidden rotate-[12deg] md:block"
+            />
+          </div>
+
+          <div
+            data-gif-slot="ux-process-portrait"
+            className="relative mt-8 h-[261px] w-[196px] shrink-0 bg-surface [clip-path:inset(0_round_20px)] md:mt-0 md:h-[444px] md:w-[352px] md:[clip-path:inset(0_round_32px)]"
           >
             <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/image-glitch.gif"
+              alt="Navneet Mandal"
+              fill
+              unoptimized
+              className="scale-110 object-cover"
+              style={{ objectPosition: "center 30%" }}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </section>
+
+      {/* Tools */}
+      <section className="mx-auto max-w-content px-6 py-24">
+        <h2 className="font-body text-[24px] font-semibold text-text-primary">
+          These are the tools behind my creative flow — and I’m always leveling up with new ways
+          of working
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {tools.map((tool, i) => (
+            <ToolBadge key={`${tool.name}-${i}`} tool={tool} />
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24">
+        <div className="mx-auto max-w-content px-6">
+          <h2 className="font-body font-bold text-h2">Testimonials</h2>
+          <p className="mt-2 text-[18px] text-text-muted">
+            Proof I&apos;m not hard to work with — straight from real teammates
+          </p>
+        </div>
+        <div className="mt-8">
+          <TestimonialMarquee testimonials={testimonials} />
+        </div>
+      </section>
+
+      {/* Work Experience */}
+      <section className="py-24">
+        <div className="mx-auto max-w-content px-6">
+          <h2 className="font-body font-bold text-h2">Work Ex.</h2>
+          <p className="mt-2 text-[18px] text-text-muted">as a Product Designer with…</p>
+        </div>
+        <div className="mt-8">
+          <WorkExTimeline
+            productDesignJobs={productDesignJobs}
+            graphicDesignerNote={graphicDesignerNote}
+            graphicDesignJobs={graphicDesignJobs}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </section>
+    </main>
   );
 }
