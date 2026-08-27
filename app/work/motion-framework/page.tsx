@@ -740,7 +740,7 @@ export default function MotionFrameworkPage() {
               {quad && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 overflow-hidden rounded-[12px] md:rounded-[16px]">
                   <div className="flex w-full items-center justify-center gap-6 px-6">
-                    {[quad.top, quad.right].map((src, qi) => (
+                    ([quad.top, quad.right] as string[]).map((src, qi) =>
                       <div
                         key={qi}
                         className="relative aspect-[2/1] flex-1 scale-150 overflow-hidden rounded-[12px]"
