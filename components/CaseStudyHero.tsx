@@ -1,7 +1,13 @@
 import Image from "next/image";
 import type { CaseStudy } from "@/lib/data/caseStudies";
 
-export default function CaseStudyHero({ caseStudy }: { caseStudy: CaseStudy }) {
+export default function CaseStudyHero({
+  caseStudy,
+  heroTopFade = false,
+}: {
+  caseStudy: CaseStudy;
+  heroTopFade?: boolean;
+}) {
   const meta = [
     { label: "MY ROLE", lines: caseStudy.role },
     { label: "DELIVERABLES", lines: caseStudy.deliverables },
@@ -22,10 +28,20 @@ export default function CaseStudyHero({ caseStudy }: { caseStudy: CaseStudy }) {
             src={caseStudy.heroImage}
             alt={caseStudy.title}
             fill
+            unoptimized
             sizes="(min-width: 768px) 1200px, 100vw"
             className="object-cover"
             priority
           />
+          {heroTopFade && (
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(to bottom, #141414 0%, rgba(20,20,20,0.4) 100%)",
+              }}
+            />
+          )}
         </div>
       ) : (
         <div

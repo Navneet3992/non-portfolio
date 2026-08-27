@@ -32,7 +32,7 @@ const config: Config = {
         h2: ["clamp(1.75rem, 3.5vw, 2.5rem)", { lineHeight: "1.1", fontWeight: "700" }],
         h3: ["clamp(1.125rem, 2vw, 1.5rem)", { lineHeight: "1.2", fontWeight: "600" }],
         stat: ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.1", fontWeight: "700" }],
-        label: ["0.75rem", { lineHeight: "1.2", fontWeight: "500", letterSpacing: "0.08em" }],
+        label: ["0.6875rem", { lineHeight: "1.2", fontWeight: "500", letterSpacing: "0.08em" }],
         body: ["18px", { lineHeight: "1.5", fontWeight: "400" }],
       },
       borderRadius: {

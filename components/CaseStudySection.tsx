@@ -2,7 +2,7 @@ export default function CaseStudySection({
   heading,
   children,
 }: {
-  heading: string;
+  heading: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (

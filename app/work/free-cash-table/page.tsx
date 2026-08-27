@@ -1,6 +1,7 @@
 import Image from "next/image";
 import CaseStudyHero from "@/components/CaseStudyHero";
 import CaseStudySection from "@/components/CaseStudySection";
+import ImpactStatsGrid from "@/components/ImpactStatsGrid";
 import NextProjectButton from "@/components/ui/NextProjectButton";
 import { getCaseStudy, getNextCaseStudy } from "@/lib/data/caseStudies";
 import { notFound } from "next/navigation";
@@ -181,25 +182,12 @@ export default function FreeCashTablePage() {
             practice play.
           </p>
         </div>
-        <div
-          className="mt-6 grid grid-cols-1 gap-8 rounded-[20px] px-6 py-8 sm:grid-cols-2 md:rounded-[40px] md:px-[104px]"
-          style={{
-            background: "linear-gradient(to bottom, rgba(20,20,20,0), #242424)",
-          }}
-        >
-          {caseStudy.stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col gap-2">
-              <p
-                className={`font-display text-stat text-accent ${
-                  stat.value === "~5% to 10% increase in Deposit" ? "lg:whitespace-nowrap" : ""
-                }`}
-              >
-                {stat.value}
-              </p>
-              <p className="text-body text-text-muted">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+        <ImpactStatsGrid
+          stats={caseStudy.stats.map((stat) => ({
+            ...stat,
+            nowrap: stat.value === "~5% to 10% increase in Deposit",
+          }))}
+        />
 
         <div className="mt-32 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-[80px]">
           <h2 className="font-body font-bold text-h2">Why These Numbers Matter</h2>
@@ -217,13 +205,13 @@ export default function FreeCashTablePage() {
           }}
         >
           <div
-            className="absolute -bottom-[200px] left-1/2 z-0 w-full max-w-[645.12px] -translate-x-1/2 overflow-hidden rounded-[24px] md:rounded-[48px]"
+            className="absolute -bottom-[200px] left-1/2 z-0 w-[645.12px] -translate-x-1/2 overflow-hidden rounded-[24px] md:rounded-[48px]"
             style={{
               background: "linear-gradient(to bottom, rgba(20,20,20,0), #242424)",
             }}
           >
             <Image
-              src="/images/bottomsheet.gif"
+              src="/images/bottomsheet-new.gif"
               alt=""
               aria-hidden
               width={1080}
@@ -246,9 +234,9 @@ export default function FreeCashTablePage() {
                 "linear-gradient(to bottom, rgba(20,20,20,0), #242424 calc(100% - 16px))",
             }}
           />
-          <div className="absolute -bottom-[16px] left-1/2 z-[2] w-full max-w-[368px] -translate-x-1/2 overflow-hidden rounded-t-[32px]">
+          <div className="absolute -bottom-[16px] left-1/2 z-[2] w-[368px] -translate-x-1/2 overflow-hidden rounded-t-[32px]">
             <Image
-              src="/images/bottomsheet.gif"
+              src="/images/bottomsheet-new.gif"
               alt="Bottom sheet UI on the Practice Lobby"
               width={1080}
               height={993}
