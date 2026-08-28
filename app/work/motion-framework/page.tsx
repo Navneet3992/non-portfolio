@@ -8,6 +8,8 @@ import { notFound } from "next/navigation";
 
 const slug = "motion-framework";
 
+type QuadPositions = { top: string; right: string; bottom: string; left: string };
+
 export default function MotionFrameworkPage() {
   const caseStudy = getCaseStudy(slug);
   if (!caseStudy) notFound();
@@ -701,7 +703,7 @@ export default function MotionFrameworkPage() {
             {
               label: "Skeleton Shimmer",
               gif: "/images/skeleton-shimmer.gif",
-              quad: null,
+              quad: null as QuadPositions | null,
             },
             {
               label: "Bottom Navigation",
@@ -740,7 +742,7 @@ export default function MotionFrameworkPage() {
               {quad && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 overflow-hidden rounded-[12px] md:rounded-[16px]">
                   <div className="flex w-full items-center justify-center gap-6 px-6">
-                    ([quad.top, quad.right] as string[]).map((src, qi) =>
+                    {(([quad.top, quad.right]) as string[]).map((src, qi) => (
                       <div
                         key={qi}
                         className="relative aspect-[2/1] flex-1 scale-150 overflow-hidden rounded-[12px]"
@@ -792,7 +794,7 @@ export default function MotionFrameworkPage() {
             {
               label: "Applying Filters",
               gif: "/images/applying-filters.gif",
-              quad: null,
+              quad: null as QuadPositions | null,
             },
             {
               label: "Section Tab Transition",
@@ -879,7 +881,7 @@ export default function MotionFrameworkPage() {
             {
               label: "Tool Tips",
               gif: "/images/tool-tip.gif",
-              quad: null,
+              quad: null as QuadPositions | null,
               navStack: null,
             },
             {
